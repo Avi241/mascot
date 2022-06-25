@@ -8,6 +8,7 @@ This package depends on few python pacakages.Please follow the below step to ins
 ```
 sudo apt-get install python3-pip -y  
 sudo -H pip3 install --upgrade pip 
+sudo apt-get install python3-tk
 pip3 install rospkg ## Skip this step if you are using ROS Noetic
 pip3 install matplotlib
 pip3 install numpy
@@ -97,7 +98,7 @@ Please follow the steps to run a docker image of the simulator.
 
 #### Run docker and open bash shell
 
-    docker run -it --privileged --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v ~/mascot/home:/home/:rw --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -p 14556:14556/udp --name=mascot avi241/simulator bash
+    docker run -it --privileged --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v ~/mascot/home:/home/:rw --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -p 14556:14556/udp --name=mascot avi241/mascot-sim bash
 
 #### Try running the Program
 
