@@ -97,7 +97,7 @@ Please follow the steps to run a docker image of the simulator.
 
 #### Run docker and open bash shell
 
-    docker run -it --privileged --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v ~/mascot/home:/home/:rw --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -p 14556:14556/udp --name=mascot avi241/simulator bash
+    docker run -it --privileged --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v ~/mascot/home:/home/:rw --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -p 14556:14556/udp --name=mascot avi241/ bash
 
 #### Try running the Program
 
