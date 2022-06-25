@@ -1,0 +1,94 @@
+Robot:
+  Number: 4 # Number of Drones
+  InitialPose : 1 # Make it false if you want to place the robot at random points
+  Max_force: 0.6 # Max-force in x and y axis
+  Position:  # Intial Position of each Drones X Y Z ..... Add the position according to your no. of robots
+    r1: 
+      x: -10
+      y: 10
+      z: 1
+
+    r2: 
+      x: -10
+      y: -10 
+      z: 2 
+    
+    r3: 
+      x: 10
+      y: -10
+      z: 3
+    
+    r4: 
+      x: 10
+      y: 10  
+      z: 4
+    
+    r5: 
+      x: 16
+      y: -20 
+      z: 5
+
+    r6: 
+      x: -8
+      y: 18 
+      z: 6 
+    
+    r7: 
+      x: 2
+      y: -12 
+      z: 7
+    
+    r8: 
+      x: 12
+      y: -18  
+      z: 8
+    
+    r9: 
+      x: 5
+      y: -17  
+      z: 9
+
+    r10: 
+      x: -8
+      y: 18  
+      z: 10
+    
+    r11: 
+      x: 40
+      y: -40  
+      z: 11
+    
+    r12: 
+      x: -40
+      y: -40  
+      z: 12
+
+Control:
+  Custom_Control_Law : 0
+  Position_Control : 1 # Enable Position Control
+  Position_params:
+    kp: 1.2 # Proportional Gain
+    kd: 3.5 # differential Gain
+  
+  Consensus_Control : 0 # Enable Consensus Control
+  Consensus_params:
+    con_kp : 3
+    con_kd : 30 
+    Communication_Graph : 0 # 0- Full communication(Automatically Generated L-matrix), 1 - User will specify L-matrix
+    L_mat : [[3,-1,-1,-1],    # Lagrangian Matrix
+             [-1,3,-1,-1],
+             [-1,-1,3,-1],
+             [-1,-1,-1,3]] 
+    Leader : 0 # For leader follower give the index of leader, 0-no-leader only distributed control # Don't select last drone as a leader
+    minmax : 1 # Enable for Non-linear Minmax Control , In minmax leader is 1st drone  # Make Leader flag 0 before using minmax
+
+
+# Please find the plot at location mascot/scripts/figures 
+# Plots will be overwrited after each controller program run So please copy it if you need it.
+Plots : 
+  Position : 1 # Enable for position Plot
+  Velocity : 1 # Enable for Velocity Plot
+  Save_plot : 1 # Enable to save Plot
+  Show_plot : 0 # Enable to show Plot  Plot will be shown when the program is killed with ( Ctrl+C ) Key
+
+  

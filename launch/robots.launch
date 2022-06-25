@@ -1,0 +1,45 @@
+<launch>
+
+            <group ns="r1">
+                <arg name="ns" value="r1"/>
+                <param name="robot_description" command="$(find xacro)/xacro $(find mascot)/urdf/model.xacro robot_name:=$(arg ns)" />                                        
+                <include file="$(find mascot)/launch/one_robot.launch">
+                <arg name="init_pose" value="-x -10 -y 10 -z 0" />
+                <arg name="robot_name" value="r1" />
+                </include>
+            </group>
+
+            
+
+            <group ns="r2">
+                <arg name="ns" value="r2"/>
+                <param name="robot_description" command="$(find xacro)/xacro $(find mascot)/urdf/model.xacro robot_name:=$(arg ns)" />                                        
+                <include file="$(find mascot)/launch/one_robot.launch">
+                <arg name="init_pose" value="-x -10 -y -10 -z 0" />
+                <arg name="robot_name" value="r2" />
+                </include>
+            </group>
+
+            
+
+            <group ns="r3">
+                <arg name="ns" value="r3"/>
+                <param name="robot_description" command="$(find xacro)/xacro $(find mascot)/urdf/model.xacro robot_name:=$(arg ns)" />                                        
+                <include file="$(find mascot)/launch/one_robot.launch">
+                <arg name="init_pose" value="-x 10 -y -10 -z 0" />
+                <arg name="robot_name" value="r3" />
+                </include>
+            </group>
+
+            
+
+            <group ns="r4">
+                <arg name="ns" value="r4"/>
+                <param name="robot_description" command="$(find xacro)/xacro $(find mascot)/urdf/model.xacro robot_name:=$(arg ns)" />                                        
+                <include file="$(find mascot)/launch/one_robot.launch">
+                <arg name="init_pose" value="-x 10 -y 10 -z 0" />
+                <arg name="robot_name" value="r4" />
+                </include>
+            </group>
+
+            </launch>

@@ -1,0 +1,9 @@
+<launch>
+                <node name="control1" pkg="mascot" type="control.py" output="screen" args="-index 1" /> 
+            
+                <node name="control2" pkg="mascot" type="control.py" output="screen" args="-index 2" /> 
+            
+                <node name="control3" pkg="mascot" type="control.py" output="screen" args="-index 3" /> 
+            
+                <node name="control4" pkg="mascot" type="control.py" output="screen" args="-index 4" /> 
+            </launch>
