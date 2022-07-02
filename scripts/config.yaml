@@ -64,8 +64,8 @@ Robot:
       z: 12
 
 Control:
-  Custom_Control_Law : 0
-  Position_Control : 1 # Enable Position Control
+  Custom_Control_Law : True # Enable Custom Control
+  Position_Control : 0 # Enable Position Control
   Position_params:
     kp: 1.2 # Proportional Gain
     kd: 3.5 # differential Gain
@@ -80,7 +80,7 @@ Control:
              [-1,-1,3,-1],
              [-1,-1,-1,3]] 
     Leader : 0 # For leader follower give the index of leader, 0-no-leader only distributed control # Don't select last drone as a leader
-    minmax : 1 # Enable for Non-linear Minmax Control , In minmax leader is 1st drone  # Make Leader flag 0 before using minmax
+    minmax : 0 # Enable for Non-linear Minmax Control , In minmax leader is 1st drone  # Make Leader flag 0 before using minmax
 
 
 # Please find the plot at location mascot/scripts/figures 
@@ -91,4 +91,4 @@ Plots :
   Save_plot : 1 # Enable to save Plot
   Show_plot : 0 # Enable to show Plot  Plot will be shown when the program is killed with ( Ctrl+C ) Key
 
-  
+

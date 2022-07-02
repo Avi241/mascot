@@ -41,7 +41,7 @@
       <pubaccTopic>${robot_name}/drone/gt_acc</pubaccTopic>
       <rollpitchProportionalGain>20.0</rollpitchProportionalGain>
       <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
-      <rollpitchLimit>0.5</rollpitchLimit>
+      <rollpitchLimit>0.1</rollpitchLimit>
       <yawProportionalGain>2.0</yawProportionalGain>
       <yawDifferentialGain>1.0</yawDifferentialGain>
       <yawLimit>1.5</yawLimit>

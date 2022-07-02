@@ -10,7 +10,6 @@ from matplotlib import pyplot as plt
 import time
 import numpy as np
 import argparse
-from test import control_user
 
 parser = argparse.ArgumentParser(description='Index arguments')
 parser.add_argument('-index', type=int, default=1, help='index of Robot')
@@ -93,17 +92,6 @@ class Robot:
         set_pos_y = data.y
 
     def pub_force(self, force_x, force_y, force_z):
-        if force_x >= max_force or force_x <= -max_force:
-                if force_x <= 0:
-                    force_x = -max_force
-                else:
-                    force_x = max_force
-
-        if force_y >= max_force or force_y <= -max_force:
-            if force_y <= 0:
-                force_y = -max_force
-            else:
-                force_y = max_force
         self.msg.force.x = force_x
         self.msg.force.y = force_y
         self.msg.force.z = force_z
@@ -149,6 +137,18 @@ class Robot:
                 - my_gain_d * self.vel.linear.y
             )
 
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
+
             self.pub_force(force_x, force_y, 0)
 
 
@@ -180,6 +180,18 @@ def position_control():
 
             force_x = my_gain_p * (pos_error_x) + my_gain_d * (vel_error_x)
             force_y = my_gain_p * (pos_error_y) + my_gain_d * (vel_error_y)
+
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
 
             now = time.time()
 
@@ -221,6 +233,19 @@ def consensus_control():  # Distributed Consensus
             force_x = float(Ax[i]) + con_kd * vel_error_x
             force_y = float(Ay[i]) + con_kd * vel_error_y
 
+
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
+
             now = time.time()
 
             for j in range(num_agent):
@@ -258,6 +283,18 @@ def leader_consensus_control():
 
             force_x = float(Ax[i]) + con_kd * vel_error_x
             force_y = float(Ay[i]) + con_kd * vel_error_y
+
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
 
             now = time.time()
             robot[i].pub_force(force_x, force_y, 0)
@@ -298,6 +335,19 @@ def mixmax_consensus():
                 force_y = beta[i]*np.sign(z_pos_y)
             else:
                 force_y = -beta[i]*np.sign(s_z_y)
+
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
+
                 
             robot[i].pub_force(force_x, force_y, 0)
             now = time.time()
@@ -307,8 +357,8 @@ def mixmax_consensus():
 def user_control_func():
 
     rospy.sleep(0.5)
-    if i != leader:
-        robot[i].start_consenctrl()  ## i is index of the robot
+
+    robot[i].start_consenctrl()  ## i is index of the robot
     rospy.sleep(0.5)
     program_starts = time.time()
     prev_time=0
@@ -319,17 +369,12 @@ def user_control_func():
         
         #### Get States All the obtained states are in Earth Frame ############
 
-            pos_x = [robot[i].pose.position.x for i in range(num_agent)] # get_Positon   
-            vel_x = [robot[i].vel.linear.x  for i in range(num_agent)] # get_Linear_Velocity 
-            acc_x = [robot[i].acc.linear.x  for i in range(num_agent)] # get_Linear_Acceleration
-
-            pos_y = [robot[i].pose.position.y for i in range(num_agent)] # get_Positon   
-            vel_y = [robot[i].vel.linear.y  for i in range(num_agent)] # get_Linear_Velocity 
-            acc_y = [robot[i].acc.linear.y  for i in range(num_agent)] # get_Linear_Acceleration
+            pos_x = robot[i].pose.position.x  # get_Positon   
+            vel_x = robot[i].vel.linear.x   # get_Linear_Velocity 
+            acc_x = robot[i].acc.linear.x   # get_Linear_Acceleration
 
             ##########
 
-            force_x,force_y = control_user(pos_x,vel_x,acc_x,pos_y,vel_y,acc_y,i,num_agent,leader)
 
             ##  Write your Algorithms here  ######
 
@@ -337,6 +382,21 @@ def user_control_func():
             #########
 
             ##### Publish Force Command ###############
+
+            force_x = 1
+            force_y = 1
+
+            if force_x >= max_force or force_x <= -max_force:
+                if force_x <= 0:
+                    force_x = -max_force
+                else:
+                    force_x = max_force
+
+            if force_y >= max_force or force_y <= -max_force:
+                if force_y <= 0:
+                    force_y = -max_force
+                else:
+                    force_y = max_force
 
             now = time.time()
             robot[i].pub_force(force_x, force_y, 0)
@@ -435,9 +495,10 @@ if index == num_agent:
 
 if __name__ == "__main__":
     try:
-        if data["Control"]["Custom_Control_Law"]:
-            user_control_func()
-        elif data["Control"]["Position_Control"]:
+
+        # user_control_func()
+
+        if data["Control"]["Position_Control"]:
             position_control()
         elif data["Control"]["Consensus_Control"] :
             if data["Control"]["Consensus_params"]["Leader"]!=0 :

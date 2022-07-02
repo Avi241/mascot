@@ -75,6 +75,15 @@ file.write("<launch>")
 
 for x in range(int(agent_numb)):
 
+    if data["Control"]["Custom_Control_Law"]:
+        num = x + 1
+        file.write(
+            """
+                <node name="control{num}" pkg="mascot" type="control.py" output="screen" args="-index {num}" /> 
+            """.format(
+                num=num)
+        )
+
     if data["Control"]["Position_Control"]:
         num = x + 1
         file.write(
@@ -115,3 +124,4 @@ for x in range(int(agent_numb)):
 
 file.write("</launch>")
 file.close()
+print("Configuration Done")
