@@ -109,7 +109,7 @@ Please follow the steps to run a docker image of the simulator.
 
     gazebo
 
-#### If this shows any error follow the below step  or Move to usage step.
+#### If this shows any error follow the below step  if gazebo opens successfully Please move to usage step.
 
 #### If system uses LibGL as a Graphics driver there won't be any error. For the systems using Nvidia as a Graphcis Driver please follow the below step.
 
