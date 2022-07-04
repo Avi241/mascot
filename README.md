@@ -61,6 +61,10 @@ roslaunch mascot controller.launch
 rosrun mascot leader_control.py
 ```
 
+#### Outputs
+
+After Killing the Controller with Ctrl+C the program will automatically save the Plots and Numpy data at the location mascot/scripts/figures and mascot/scripts/numpy_array respectively.
+
 ## Writing your own control Algorithms 
 
 Make the Custom_Control_Law Flag as True in config.yaml file
