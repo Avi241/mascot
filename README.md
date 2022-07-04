@@ -25,7 +25,7 @@ cd ~/catkin_ws
 catkin make
 ```
 
-## Using for testig Different Control Laws with Multiple Drone
+## Use for testing Different Control Laws with Multiple Drone
 
 Open config.yaml located at mascot/scripts.
 Edit according to you requirements.
