@@ -3,8 +3,10 @@
 MASCOT is a ROS-Gazebo based multiagent simulation platform developed by Indian Institute of Technology, Dharwad. This package uses the modified plugin from ['tum_simulator'] (http://wiki.ros.org/tum_simulator). MASCOT provides the researchers a standard platform to test their linear as well as non-linear control laws on a Multiagent System.This provides few basics linear and non-linear control law as an example where user can modify and tune the controller. User can write their own control law in basic python. Accesible states are position,velocity, accelertion,orientation of the quadcopter and can publish the force command.Here the quadcopter is modeled as double integrator.Also we have provided a Docker Image for easy usage.
 
 ## Requirements #
-This package depends on few python pacakages.Please follow the below step to install it.
+This package depends on ROS,Gazebo and few python pacakages.Please follow the below step to install it.
 
+To install ROS please follow an official installation steps [ROS](http://wiki.ros.org/Installation/Ubuntu).
+To install the dependent Python Package run the following command.
 ```
 sudo apt-get install python3-pip -y  
 sudo -H pip3 install --upgrade pip 
@@ -22,8 +24,6 @@ git clone https://github.com/Avi241/mascot.git
 cd ~/catkin_ws
 catkin make
 ```
-
-Here catkin_ws is the path of the catkin workspace. Please refer to the [tutorial](http://wiki.ros.org/ROS/Tutorials) about how to create a catkin workspace in ROS.
 
 ## Using for testig Different Control Laws with Multiple Drone
 
