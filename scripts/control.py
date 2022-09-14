@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 import time
 import numpy as np
 import argparse
-from test import control_user
+from custom_control import control_user
 
 parser = argparse.ArgumentParser(description='Index arguments')
 parser.add_argument('-index', type=int, default=1, help='index of Robot')
