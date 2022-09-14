@@ -22,7 +22,7 @@ pip3 install --ignore-installed PyYAML
 cd ~/catkin_ws/src
 git clone https://github.com/Avi241/mascot.git
 cd ~/catkin_ws
-catkin make
+catkin_make
 ```
 
 ## Use for testing Different Control Laws with Multiple Drone
